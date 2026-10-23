@@ -6,7 +6,7 @@ import logging
 import time
 from typing import Any, Final
 
-from botocore.exceptions import BotoCoreError, ClientError  # type: ignore[import-untyped]
+from botocore.exceptions import BotoCoreError, ClientError
 
 from workflow_adapter.backends.aws_dynamodb import DynamoDBWorkflowStore, _pad_ver
 from workflow_adapter.models import (

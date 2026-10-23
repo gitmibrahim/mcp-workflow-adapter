@@ -4,8 +4,8 @@ import json
 import logging
 from typing import Any
 
-import boto3  # type: ignore[import-untyped]
-from botocore.exceptions import BotoCoreError, ClientError  # type: ignore[import-untyped]
+import boto3
+from botocore.exceptions import BotoCoreError, ClientError
 
 from workflow_adapter.backends.aws_dynamodb import DynamoDBWorkflowStore
 from workflow_adapter.backends.aws_sfn_reconciler import StepFunctionsReconciler

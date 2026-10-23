@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import contextlib
 import logging
-from typing import Any
+from typing import Any, cast
 
-from botocore.exceptions import BotoCoreError, ClientError  # type: ignore[import-untyped]
+from botocore.exceptions import BotoCoreError, ClientError
 from pydantic import ValidationError
 
 from workflow_adapter.errors import AdapterError, ErrorCode, generate_correlation_id
@@ -266,7 +266,7 @@ class DynamoDBWorkflowStore(StorageBackendPort):
                 },
                 ConsistentRead=True,
             )
-            return resp.get("Item")
+            return cast("dict[str, Any] | None", resp.get("Item"))
         except (ClientError, BotoCoreError) as exc:
             raise self._map_client_error(exc, corr_id) from exc
 
@@ -277,7 +277,7 @@ class DynamoDBWorkflowStore(StorageBackendPort):
                 Key={"PK": self._s(f"ASSET#{asset_id}"), "SK": self._s("ACTIVE_LOCK")},
                 ConsistentRead=True,
             )
-            return resp.get("Item")
+            return cast("dict[str, Any] | None", resp.get("Item"))
         except (ClientError, BotoCoreError) as exc:
             raise self._map_client_error(exc, corr_id) from exc
 
@@ -293,7 +293,7 @@ class DynamoDBWorkflowStore(StorageBackendPort):
                 },
                 ConsistentRead=True,
             )
-            return resp.get("Item")
+            return cast("dict[str, Any] | None", resp.get("Item"))
         except (ClientError, BotoCoreError) as exc:
             raise self._map_client_error(exc, corr_id) from exc
 

@@ -182,7 +182,7 @@ def test_models_are_frozen() -> None:
     summary = StepSummary(step_id="s1", title="Title", unit="u", min_value=1.0, max_value=2.0)
     with pytest.raises(ValidationError):
         # Attempt mutation on frozen Pydantic model
-        summary.step_id = "s2"  # type: ignore[misc]
+        summary.step_id = "s2"
 
     rec = CompletedStepRecord(
         step_id="s1",
@@ -193,4 +193,4 @@ def test_models_are_frozen() -> None:
         recorded_at=utc_now_iso(),
     )
     with pytest.raises(ValidationError):
-        rec.value = 2.0  # type: ignore[misc]
+        rec.value = 2.0

@@ -5,7 +5,7 @@ from pathlib import Path
 import httpx
 import pytest
 
-from fixtures.oauth_test_issuer import EphemeralOAuth2TestIssuer
+from tests.fixtures.oauth_test_issuer import EphemeralOAuth2TestIssuer
 from workflow_adapter.auth import AuthProfile, OAuth2TokenVerifier
 from workflow_adapter.backends.local import LocalBackend
 from workflow_adapter.errors import ErrorCode

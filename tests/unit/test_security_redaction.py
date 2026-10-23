@@ -106,7 +106,7 @@ def test_redacting_json_formatter() -> None:
         args=(),
         exc_info=None,
     )
-    record.structured_data = {  # type: ignore[attr-defined]
+    record.structured_data = {  # noqa: B010
         "client_secret": "super_secret",
         "token": "secret_token",
     }
